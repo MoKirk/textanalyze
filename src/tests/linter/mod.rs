@@ -20,6 +20,13 @@ fn it_can_add_linters_to_the_analyzer() {
 #[test]
 /// checks that it can run a single linter
 fn it_can_run_a_single_linter() {
+    let check = "foobar_b";
+    let testtext = Text::from_string(check);
+    let mut analyzer = TextAnalyzer::new(testtext);
+    let testlinter = TestLinter::new();
+    let result = analyzer.run_linter(Box::new(testlinter));
+    let result_to_check = result.iter().next().unwrap();
+    assert_eq!(result_to_check.message, check);
 }
 
 
@@ -33,7 +40,7 @@ fn it_can_return_multiple_results() {
     analyzer.add_linter(Box::new(testlinter));
     assert_eq!(1, analyzer.linter().len());
     let result = analyzer.run();
-    assert_eq!(2, result.len()); /// TODO: <--
+    assert_eq!(2, result.len()); 
     let result_to_check = result.iter().next().unwrap();
     assert_eq!(result_to_check.message, "foo");
 }

@@ -19,7 +19,6 @@ fn it_can_split_the_text_by_lines() {
 fn it_can_split_the_text_by_sentences() {
     let txt = Text::from_string("abcd. efgh? ijk! mnop. qrz ast");
     let mut sentences = txt.as_sentences().into_iter();
-    // TODO: implement this
     assert_eq!("abcd.", sentences.next().unwrap());
     assert_eq!("efgh?", sentences.next().unwrap());
     assert_eq!("ijk!", sentences.next().unwrap());

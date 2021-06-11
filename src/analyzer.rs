@@ -1,4 +1,3 @@
-use crate::linter::TestLinter;
 use crate::linter::*;
 use crate::text::Text;
 /// This struct represents a text analyzer
@@ -33,6 +32,12 @@ impl TextAnalyzer {
         for linter in &self.linter {
             results.append(&mut linter.analyze_text(&self.text));
         }
-        return results;
+        results
+    }
+
+
+    /// runs a provided linter 
+    pub fn run_linter(&self, lin: Box<dyn Linter>) -> Vec<Result> {
+        lin.analyze_text(&self.text)
     }
 }

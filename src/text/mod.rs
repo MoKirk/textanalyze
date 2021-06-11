@@ -16,8 +16,7 @@ impl Text {
 
     /// returns the text as lines
     pub fn as_lines(&self) -> std::str::Lines {
-        let lines = self.inner_text.lines();
-        lines
+        self.inner_text.lines()
     }
 
     /// returns the text as sentences

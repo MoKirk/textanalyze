@@ -14,8 +14,8 @@ pub enum ResultLocationType {
 
 /// This is the location, where the result is found
 pub struct ResultLocation {
-    location_type: ResultLocationType,
-    position: usize
+    _location_type: ResultLocationType,
+    _position: usize
 }
 
 
@@ -33,7 +33,7 @@ impl Result {
         Result {
             message: message.to_string(),
             result_type,
-            result_location: ResultLocation { location_type, position }
+            result_location: ResultLocation { _location_type: location_type, _position: position }
         }
     }
 }

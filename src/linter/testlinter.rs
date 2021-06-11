@@ -19,13 +19,13 @@ impl Linter for TestLinter {
     fn analyze_text(&self, text: &Text) -> Vec<Result> {
         let message = text.inner_text().clone();
         let mut v = Vec::new();
-        if message.contains("\n") {
+        if message.contains('\n') {
             for line in message.lines() {
                 v.push(Result::new(&line, ResultType::Debug, ResultLocationType::None, 0));
             }
         } else {
             v.push(Result::new(&message, ResultType::Debug, ResultLocationType::None, 0));
         }
-        return v;
+        v
     }
 }
