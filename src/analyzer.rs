@@ -29,9 +29,9 @@ impl TextAnalyzer {
 
     /// Runs all registered linters
     pub fn run(&self) -> Vec<Result> {
-        let mut results = Vec::new();
+        let mut results : Vec<Result> = Vec::new();
         for linter in &self.linter {
-            results.push(linter.analyze_text(&self.text));
+            results.append(&mut linter.analyze_text(&self.text));
         }
         return results;
     }

@@ -41,5 +41,5 @@ impl Result {
 /// this is the defintion of a linter
 pub trait Linter {
     /// analyzes a text
-    fn analyze_text(&self, text: &Text) -> Result;
+    fn analyze_text(&self, text: &Text) -> Vec<Result>;
 }
