@@ -16,15 +16,15 @@ impl TestLinter {
 
 impl Linter for TestLinter {
     /// implements the linter for the testlinter
-    fn analyze_text(&self, text: &Text) -> Vec<Result> {
+    fn analyze_text(&self, text: &Text) -> Vec<LinterResult> {
         let message = text.inner_text().clone();
         let mut v = Vec::new();
         if message.contains('\n') {
             for line in message.lines() {
-                v.push(Result::new(&line, ResultType::Debug, ResultLocationType::None, 0));
+                v.push(LinterResult::new(&line, ResultType::Debug, ResultLocationType::None, 0));
             }
         } else {
-            v.push(Result::new(&message, ResultType::Debug, ResultLocationType::None, 0));
+            v.push(LinterResult::new(&message, ResultType::Debug, ResultLocationType::None, 0));
         }
         v
     }

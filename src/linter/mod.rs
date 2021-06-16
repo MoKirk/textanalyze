@@ -1,5 +1,9 @@
 mod testlinter;
 pub use testlinter::TestLinter;
+
+mod weasel;
+pub use weasel::WeaselLinter;
+
 use crate::text::Text;
 
 /// Possible result types
@@ -20,17 +24,17 @@ pub struct ResultLocation {
 
 
 /// This is the linter result struct
-pub struct Result {
+pub struct LinterResult {
     pub message: String,
     pub result_type: ResultType,
     pub result_location: ResultLocation
 }
 
 
-impl Result {
+impl LinterResult {
     /// returns a new result object
-    pub fn new(message: &str, result_type: ResultType, location_type: ResultLocationType, position: usize) -> Result {
-        Result {
+    pub fn new(message: &str, result_type: ResultType, location_type: ResultLocationType, position: usize) -> LinterResult {
+        LinterResult {
             message: message.to_string(),
             result_type,
             result_location: ResultLocation { _location_type: location_type, _position: position }
@@ -41,5 +45,5 @@ impl Result {
 /// this is the defintion of a linter
 pub trait Linter {
     /// analyzes a text
-    fn analyze_text(&self, text: &Text) -> Vec<Result>;
+    fn analyze_text(&self, text: &Text) -> Vec<LinterResult>;
 }
