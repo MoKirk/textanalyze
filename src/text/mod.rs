@@ -48,4 +48,12 @@ impl Text {
     pub fn get_language(&self) -> &TextLanguage {
         &self.language
     }
+
+
+    pub fn get_language_shortcode(&self) -> &str {
+     match self.language {
+      TextLanguage::English => "en",
+      TextLanguage::German => "de",
+     }
+    }
 }

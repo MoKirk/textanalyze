@@ -33,3 +33,9 @@ fn it_can_have_a_language() {
         _ => false,
     });
 }
+
+#[test]
+fn it_can_return_the_language_shortcode() {
+    let txt = Text::from_string("abcd. efgh? ijk! mnop. qrz ast", TextLanguage::English);
+    assert_eq!("en", txt.get_language_shortcode());
+}

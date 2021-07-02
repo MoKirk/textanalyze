@@ -18,15 +18,12 @@ impl DuplicateLinter {
             let mut inner_pos = 0;
             for inner in inner_words {
                 if inner_pos > pos && word == inner {
-                    return Some(LinterResult {
-                        message: format!("found duplicate {}", word),
-                        result_type: ResultType::Warning,
-                        result_location: ResultLocation {
-                            _location_type: ResultLocationType::Sentence,
-                            _position: inner_pos
-                        }
-
-                    });
+                    return Some(LinterResult::new(
+                            &format!("found duplicate {}", word),
+                            ResultType::Warning,
+                            ResultLocationType::Sentence,
+                            inner_pos
+                    ));
                 }
                 inner_pos += 1;
             }
