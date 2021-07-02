@@ -1,12 +1,24 @@
-pub struct Text {
-    inner_text: String
+// Those are the supported languages right now
+pub enum TextLanguage {
+    English,
+    German,
 }
 
+/**
+ * A text represents the input text. it has an inner text, as well as a language enum
+ */
+pub struct Text {
+    inner_text: String,
+    language: TextLanguage,
+}
 
 impl Text {
     /// Creates a text object from a string
-    pub fn from_string(inner_text: &str) -> Self {
-        Text { inner_text: inner_text.to_string() }
+    pub fn from_string(inner_text: &str, lang: TextLanguage) -> Self {
+        Text {
+            inner_text: inner_text.to_string(),
+            language: lang,
+        }
     }
 
     /// Returns the inner text from a text
@@ -21,11 +33,19 @@ impl Text {
 
     /// returns the text as sentences
     pub fn as_sentences(&self) -> Vec<&str> {
-        let sentences : Vec<&str> = self.inner_text.split_inclusive(&['.', '!', '?'][..]).collect();
+        let sentences: Vec<&str> = self
+            .inner_text
+            .split_inclusive(&['.', '!', '?'][..])
+            .collect();
         let mut trimmed_sentences = Vec::new();
         for sentence in sentences {
             trimmed_sentences.push(sentence.trim());
         }
         trimmed_sentences
+    }
+
+    /// returns internal lang
+    pub fn get_language(&self) -> &TextLanguage {
+        &self.language
     }
 }

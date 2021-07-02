@@ -7,7 +7,12 @@ pub struct WeaselLinter;
 impl WeaselLinter {
     /// returns a weasellinter instance
     pub fn new() -> Self {
-        WeaselLinter{}
+        WeaselLinter {}
+    }
+
+    /// sets internal language (i think this needs to be set via config)
+    pub fn set_language(&self, lang: &str) {
+        println!("{}", lang);
     }
 }
 
@@ -17,4 +22,3 @@ impl Linter for WeaselLinter {
         Vec::new()
     }
 }
-
