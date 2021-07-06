@@ -3,6 +3,11 @@
 /*
  *
  * The textanalzyer has several parts
+ *
+ * data:
+ * those are possible lists used by the various linters
+ *
+ *
  * input :
  * - loads file / files / parses input
  *
@@ -22,6 +27,8 @@
  * - [x] create a first linter
  * - [ ] how can I make linter multilanguage?
  * - [ ] Check: Is the linter output okay or is it too complicated?
+ * - [ ] Check: I dont like the result type currently, that could be made better
+ * - [ ] How can i make the linters more flexible?
  */
 fn main() {
 
