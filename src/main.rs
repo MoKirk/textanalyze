@@ -22,12 +22,13 @@
  *
  * TODO:
  * - [x] create a text struct with line and sentence parser
- * - [ ] create an input which returns the text from a file
+ * - [x] create an input which returns the text from a file
  * - [ ] create an output which gets the text
  * - [x] create a first linter
  * - [ ] how can I make linter multilanguage?
  * - [ ] Check: Is the linter output okay or is it too complicated?
  * - [ ] Check: I dont like the result type currently, that could be made better
+ * - [ ] Check: Maybe the linter should be run on sentences, not on text
  * - [ ] How can i make the linters more flexible?
  */
 fn main() {

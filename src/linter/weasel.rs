@@ -1,6 +1,6 @@
 use crate::linter::*;
 use crate::text::Text;
-use std::fs;
+use crate::input::InputFile;
 
 pub struct WeaselLinter;
 
@@ -49,9 +49,8 @@ impl WeaselWordlist {
 
     /// reads the input file and builds the word array
     pub fn read(&mut self, lang: &str) {
-        // TODO: This loading can be made better, maybe wrap it into a data layer?
-        let file = format!("src/data/{}/weasel_words.txt", lang);
-        let filecontent = fs::read_to_string(file).unwrap();
+        let file = InputFile::for_data_path(&format!("{}/weasel_words.txt", lang)).expect("file should be available");
+        let filecontent = file.to_string();
         let words: Vec<&str> = filecontent.lines().collect();
         for word in words {
             &self.words.push(word.to_string());
